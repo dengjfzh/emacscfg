@@ -8,8 +8,15 @@
  '(custom-enabled-themes '(tsdh-dark))
  '(ede-project-directories '("/home/dengjf/work/src/CVS_CMS/CMS"))
  '(global-mark-ring-max 32)
+ '(imenu-list-size 0.2)
  '(package-selected-packages
-   '(ggtags helm-gtags projectile-speedbar helm-projectile helm pyim magit sr-speedbar))
+   '(imenu-list treemacs-projectile treemacs ggtags helm-gtags projectile-speedbar helm-projectile helm pyim magit sr-speedbar))
+ '(treemacs-collapse-dirs 3)
+ '(treemacs-filewatch-mode t)
+ '(treemacs-follow-mode t)
+ '(treemacs-fringe-indicator-mode t)
+ '(treemacs-git-mode t)
+ '(treemacs-hide-gitignored-files-mode t)
  '(warning-suppress-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -83,6 +90,9 @@
 ;;  (local-set-key ">" 'semantic-complete-self-insert)
 ;;  (local-set-key [(tab)] 'indent-or-complete)
 ;;  (local-set-key [(f4)] 'speedbar-get-focus)
+
+  ;; treemac
+  (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
 )
 (add-hook 'c-mode-common-hook 'dengjf/c-mode-keys)
 
@@ -93,9 +103,15 @@
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
               (ggtags-mode 1))))
 
+
 ;; chinese input method setup
 (message "setup pyim ...")
 (require 'pyim)
 ;;(require 'pyim-basedict)
 ;;(pyim-basedict-enable)
 (setq default-input-method "pyim")
+
+
+;; global key bind
+(global-set-key (kbd "<f5>") 'treemacs)
+(global-set-key (kbd "<f6>") #'imenu-list-smart-toggle)
