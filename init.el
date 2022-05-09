@@ -10,7 +10,7 @@
  '(global-mark-ring-max 32)
  '(imenu-list-size 0.2)
  '(package-selected-packages
-   '(imenu-list treemacs-projectile treemacs ggtags helm-gtags projectile-speedbar helm-projectile helm pyim magit sr-speedbar))
+   '(call-graph imenu-list treemacs-projectile treemacs ggtags helm-gtags projectile-speedbar helm-projectile helm pyim magit sr-speedbar))
  '(treemacs-collapse-dirs 3)
  '(treemacs-filewatch-mode t)
  '(treemacs-follow-mode t)
@@ -107,9 +107,12 @@
 ;; chinese input method setup
 (message "setup pyim ...")
 (require 'pyim)
-;;(require 'pyim-basedict)
-;;(pyim-basedict-enable)
+(require 'pyim-basedict)
+(pyim-basedict-enable)
 (setq default-input-method "pyim")
+(define-key pyim-mode-map "." 'pyim-page-next-page)
+(define-key pyim-mode-map "," 'pyim-page-previous-page)
+(setq pyim-page-tooltip 'minibuffer)
 
 
 ;; global key bind
