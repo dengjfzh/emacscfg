@@ -26,10 +26,10 @@
  )
 
 (require 'package)
-;;(add-to-list 'package-archives
-;;	     '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t)
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+(add-to-list 'package-archives
+	     '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t)
+;;(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+;;                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
 ;; cedet
@@ -48,15 +48,15 @@
 ;;;;(global-which-func-mode t)
 ;;(global-semantic-highlight-edits-mode t)
 ;;(semantic-mode t)
-(semantic-mode nil)
+;;(semantic-mode nil)
 ;;(global-ede-mode t)
-(require 'speedbar)
+;;(require 'speedbar)
 
-(message "setup sr-speedbar ...")
+;;(message "setup sr-speedbar ...")
 ;;(require 'sr-speedbar)
 ;;(global-set-key (kbd "s-s") 'sr-speedbar-toggle)
-(global-set-key (kbd "s-s") 'projectile-speedbar-toggle)
-(global-set-key (kbd "M-<f2>") 'projectile-speedbar-open-current-buffer-in-tree)
+;;(global-set-key (kbd "s-s") 'projectile-speedbar-toggle)
+;;(global-set-key (kbd "M-<f2>") 'projectile-speedbar-open-current-buffer-in-tree)
 
 ;; ecb
 ;;(message "setup ECB ...")
@@ -78,21 +78,24 @@
   (setq c-basic-offset 4)
   (setq tab-width 4)
   
-  (semantic-default-c-setup)
-  (local-set-key [(control return)] 'semantic-ia-complete-symbol)
-  (local-set-key "\C-c/" 'semantic-ia-complete-symbol)
-  (local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
-  (local-set-key "\C-cb" 'semantic-mrub-switch-tags)
-  (local-set-key "\C-cR" 'semantic-symref)
-  (local-set-key "\C-cr" 'semantic-symref-symbol)
-  (local-set-key "\C-cj" 'semantic-ia-fast-jump)
+;;  (semantic-default-c-setup)
+;;  (local-set-key [(control return)] 'semantic-ia-complete-symbol)
+;;  (local-set-key "\C-c/" 'semantic-ia-complete-symbol)
+;;  (local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
+;;  (local-set-key "\C-cb" 'semantic-mrub-switch-tags)
+;;  (local-set-key "\C-cR" 'semantic-symref)
+;;  (local-set-key "\C-cr" 'semantic-symref-symbol)
+;;  (local-set-key "\C-cj" 'semantic-ia-fast-jump)
+  
 ;;  (local-set-key "." 'semantic-complete-self-insert)
 ;;  (local-set-key ">" 'semantic-complete-self-insert)
 ;;  (local-set-key [(tab)] 'indent-or-complete)
 ;;  (local-set-key [(f4)] 'speedbar-get-focus)
 
-  ;; treemac
+  ;; imenu-list
   (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+
+  ;;(message "dengjf/c-mode-keys: now imenu-create-index-function is `%s'" imenu-create-index-function)
 )
 (add-hook 'c-mode-common-hook 'dengjf/c-mode-keys)
 
