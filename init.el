@@ -121,3 +121,10 @@
 ;; global key bind
 (global-set-key (kbd "<f5>") 'treemacs)
 (global-set-key (kbd "<f6>") #'imenu-list-smart-toggle)
+
+
+;;
+;;
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+(require 'dengjf_winnotepad_dotlog)
+(add-hook 'find-file-hook #'dengjf-winnotepad-dotlog)
