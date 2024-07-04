@@ -128,3 +128,6 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 (require 'dengjf_winnotepad_dotlog)
 (add-hook 'find-file-hook #'dengjf-winnotepad-dotlog)
+
+;;
+(setq inhibit-startup-screen t)
